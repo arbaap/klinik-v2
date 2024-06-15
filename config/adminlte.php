@@ -332,11 +332,11 @@ return [
         ],
 
         [
-            'text' => 'Customer',
-            'url'  => 'admin/customer',
-            'icon' => 'fas fa-fw fa-user',
-            'role' => 'admin'
+            'text'        => 'List Dokter',
+            'url'         => '/doctors',
+            'icon'        => 'far fa-fw fa-file',
         ],
+
 
         [
             'text'    => 'Book',
