@@ -16,7 +16,7 @@ class CustomerController extends Controller
         //ambil semua data last lalu bagi menjadi 5 data setiap page
         $customer =  Customer::latest()->paginate(5);
         // kembalikan halaman view customer list dengan mengirim datanya
-        return view('customer_list', compact('customer'))
+        return view('customer.customer_list', compact('customer'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

@@ -318,7 +318,7 @@ return [
         ],
         [
             'text'        => 'Dashboard',
-            'url'         => 'admin',
+            'url'         => 'dashboard',
             'icon'        => 'far fa-fw fa-file',
             // 'label'       => 4,
             // 'label_color' => 'success',
@@ -331,59 +331,6 @@ return [
             'role' => 'admin'
         ],
 
-        [
-            'text'    => 'Book',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'List',
-                    'url'  => 'admin/book',
-                    'icon' => 'fas fa-fw fa-book',
-                    'role' => 'admin'
-                ],
-
-            ],
-        ],
-        ['header' => 'Order Setting'],
-        [
-            'text' => 'Orders',
-            'url'  => 'admin/order',
-            'icon' => 'fas fa-fw fa-shopping-cart',
-            'role' => 'user'
-
-        ],
-
-    ], 'menu' => [
-        // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
-        [
-            'type'         => 'fullscreen-widget',
-            'topnav_right' => true,
-        ],
-
-        // Sidebar items:
-        [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-
-        ],
-        [
-            'text'        => 'Dashboard',
-            'url'         => 'dashboard',
-            'icon'        => 'far fa-fw fa-file',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
-        ],
-        ['header' => 'Customer Setting'],
         [
             'text' => 'Customer',
             'url'  => 'admin/customer',

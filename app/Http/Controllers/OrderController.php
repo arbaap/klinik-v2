@@ -19,7 +19,7 @@ class OrderController extends Controller
             ->select(['order.order_id', 'order.order_date', 'customer.email', 'book.title', 'order.quantity', 'order.amount', 'order.payment_status'])->paginate(5);
 
 
-        return view('order_list', compact('order'))
+        return view('order.order_list', compact('order'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 

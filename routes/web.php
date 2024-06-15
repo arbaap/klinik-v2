@@ -11,6 +11,7 @@ use App\Http\Controllers\OrderController;
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
 Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+Route::get('/', [AuthController::class, 'dashboard'])->name('dashboard');
 
 Route::get('order/getOrderId', [OrderController::class, 'getOrderId'])->name('order.getOrderId');
 Route::get('customer/getCustomerById', [CustomerController::class, 'getCustomerById'])->name('customer.getCustomerById');
@@ -22,14 +23,8 @@ Route::post('proses_register', [AuthController::class, 'proses_register'])->name
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
-    // customer
     Route::resource('customer', CustomerController::class);
-
-    // book
     Route::resource('book', BookController::class);
-
-
-    // order
     Route::resource('order', OrderController::class);
 });
 
