@@ -331,12 +331,12 @@ return [
             'role' => 'admin'
         ],
 
-        [
-            'text' => 'Customer',
-            'url'  => 'admin/customer',
-            'icon' => 'fas fa-fw fa-user',
-            'role' => 'admin'
-        ],
+        // [
+        //     'text' => 'Customer',
+        //     'url'  => 'admin/customer',
+        //     'icon' => 'fas fa-fw fa-user',
+        //     'role' => 'admin'
+        // ],
 
         [
             'text'    => 'Book',

@@ -26,7 +26,7 @@ class CustomerController extends Controller
     public function create()
     {
         //tampilkan halaman add customer
-        return view('customer_add');
+        return view('customer.customer_add');
     }
 
     /**
@@ -65,7 +65,7 @@ class CustomerController extends Controller
         // jika ada data customer
         if ($customer) {
             // buka halaman view customer_edit dengan mengirim datanya
-            return view('customer_edit', compact('customer'));
+            return view('customer.customer_edit', compact('customer'));
         } else {
             return redirect()->route('customer.index')->with('error', 'Customer not found');
         }
