@@ -31,7 +31,7 @@ class OrderController extends Controller
         //
         $customer =  Customer::all();
         $book = Book::all();
-        return view('order_add', compact('customer', 'book'));
+        return view('order.order_add', compact('customer', 'book'));
     }
 
     /**
@@ -79,7 +79,7 @@ class OrderController extends Controller
 
         if ($order) {
 
-            return view('order_edit', compact('order', 'customer', 'book'));
+            return view('order.order_edit', compact('order', 'customer', 'book'));
         } else {
             return redirect()->route('order.index')->with('error', 'Order not found');
         }
