@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Book;
 use App\Models\Customer;
 use App\Models\Order;
+use App\Models\UserModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
@@ -46,14 +47,13 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        //  cek berhasil login 
         if (Auth::check()) {
-            // menampilkan total data 
             $totalCustomer = Customer::all()->count();
             $totalBook = Book::all()->count();
             $totalOrder = Order::all()->count();
+            $totalUser = UserModel::all()->count();
 
-            return view('home', compact('totalCustomer', 'totalBook', 'totalOrder'));
+            return view('home', compact('totalCustomer', 'totalBook', 'totalOrder', 'totalUser'));
         }
 
         return redirect('login')->with('You dont have access');

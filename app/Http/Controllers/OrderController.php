@@ -19,7 +19,7 @@ class OrderController extends Controller
             ->select(['order.order_id', 'order.order_date', 'customer.email', 'book.title', 'order.quantity', 'order.amount', 'order.payment_status'])->paginate(5);
 
 
-        return view('order.order_list', compact('order'))
+        return view('admin.order.order_list', compact('order'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -31,7 +31,7 @@ class OrderController extends Controller
         //
         $customer =  Customer::all();
         $book = Book::all();
-        return view('order.order_add', compact('customer', 'book'));
+        return view('admin.order.order_add', compact('customer', 'book'));
     }
 
     /**
@@ -79,7 +79,7 @@ class OrderController extends Controller
 
         if ($order) {
 
-            return view('order.order_edit', compact('order', 'customer', 'book'));
+            return view('admin.order.order_edit', compact('order', 'customer', 'book'));
         } else {
             return redirect()->route('order.index')->with('error', 'Order not found');
         }
