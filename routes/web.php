@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\RegistrationKlinikController;
 use App\Http\Controllers\UserController;
 
 // Auth::routes();
@@ -32,4 +34,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('user', UserController::class);
 });
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('home', [AuthController::class, 'home'])->name('home');
+Route::get('registration', [AuthController::class, 'showRegistrationForm'])->name('registration');
+Route::get('/registrations', [RegistrationKlinikController::class, 'index'])->name('registrations.index');
+Route::post('proses-registration', [AuthController::class, 'processRegistration'])->name('proses.registrationklinik');
+
+Route::get('/riwayat', [RegistrationKlinikController::class, 'index'])->name('registrations.index');
+
+Route::get('/notif', [DoctorController::class, 'index'])->name('dokter.index');
+
+
+Route::post('/doctor/registrations/{id}/add-prescription', [DoctorController::class, 'addPrescription'])->name('doctor.addPrescription');

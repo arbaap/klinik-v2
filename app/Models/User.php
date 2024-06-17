@@ -48,4 +48,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function registrations()
+    {
+        return $this->hasMany(RegistrationKlinik::class, 'user_id');
+    }
+
+    public function isDoctor()
+    {
+        return $this->level === 'dokter'; // Sesuaikan dengan atribut level atau peran dokter Anda
+    }
 }
