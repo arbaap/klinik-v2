@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title','User List')
+@section('title', 'User List')
 @section('content_header')
 <h1>User List</h1>
 @stop
@@ -8,83 +8,139 @@
 @section('content')
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-12">
-
+    <div class="col-md-6">
       <div class="card">
         <div class="card-body">
-          @if(session('success'))
-          <div class="alert alert-success alert-dismissible fade show" id="success-alert" role="alert">
-            <strong>{{ session('success') }}</strong>
-
+          <h3>Admin</h3>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Fullname</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($adminUsers as $admin)
+                <tr>
+                  <td>{{ $loop->index + 1 }}</td>
+                  <td>{{ $admin->fullname }}</td>
+                  <td>{{ $admin->email }}</td>
+                  <td>
+                    <a href="{{ route('user.edit', $admin->id) }}" class="btn btn-primary btn-sm">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <form action="{{ route('user.destroy', $admin->id) }}" method="POST" style="display: inline-block;">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
           </div>
-          @endif
+          {{ $adminUsers->links() }}
+        </div>
+      </div>
+    </div>
 
-          @if(session('error'))
-          <div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>{{ session('error')}} </strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          @endif
-
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
           <div class="float-right">
             <a href="{{ route('user.create')}}" class="btn btn-success">
               <i class="fas fa-plus"></i>
               Create</a>
 
           </div>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Fullname</th>
-                <th scope="col">Email</th>
-                <th scope="col">Level</th>
-                <th scope="col" width="350px">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              @foreach ($user as $c)
-              <tr>
-                <th scope="row">{{ ++$i }}</th>
-                <td>{{ $c->fullname }}</td>
-                <td>{{ $c->email }}</td>
-                <td>{{ $c->level }}</td>
-                <td>
-                  <div class="d-flex justify-content-around">
-                    <a href="{{ route('user.edit',$c->id)}}" class="btn btn-primary">
+          <h3>Dokter</h3>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Fullname</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($doctorUsers as $doctor)
+                <tr>
+                  <td>{{ $loop->index + 1 }}</td>
+                  <td>{{ $doctor->fullname }}</td>
+                  <td>{{ $doctor->email }}</td>
+                  <td>
+                    <a href="{{ route('user.edit', $doctor->id) }}" class="btn btn-primary btn-sm">
                       <i class="fas fa-edit"></i>
-                      Edit</a>
-                    <form action="{{ route('user.destroy',$c->id)}}" method="POST">
+                    </a>
+                    <form action="{{ route('user.destroy', $doctor->id) }}" method="POST" style="display: inline-block;">
                       @csrf
                       @method('DELETE')
-                      <button type="submit" class="btn btn-danger">
+                      <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">
                         <i class="fas fa-trash"></i>
-                        Delete</button>
+                      </button>
                     </form>
-                  </div>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+          {{ $doctorUsers->links() }}
+        </div>
+      </div>
+    </div>
+  </div>
 
-                </td>
-              </tr>
-              @endforeach
-
-
-            </tbody>
-          </table>
-
-          {{ $user->links()}}
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h3>Pasien</h3>
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Fullname</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach ($patientUsers as $patient)
+                <tr>
+                  <td>{{ $loop->index + 1 }}</td>
+                  <td>{{ $patient->fullname }}</td>
+                  <td>{{ $patient->email }}</td>
+                  <td>
+                    <a href="{{ route('user.edit', $patient->id) }}" class="btn btn-primary btn-sm">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <form action="{{ route('user.destroy', $patient->id) }}" method="POST" style="display: inline-block;">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">
+                        <i class="fas fa-trash"></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+          {{ $patientUsers->links() }}
         </div>
       </div>
     </div>
   </div>
 </div>
-@stop
-
-@section('js')
-<script>
-  //fungsi dibawah untuk menghilangkan alert dengan efek fadeout   
-  $("#success-alert").fadeTo(2000, 500).fadeOut(500, function() {
-    $("#success-alert").fadeOut(500);
-  });
-</script>
 @stop

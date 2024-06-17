@@ -32,5 +32,4 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('user', UserController::class);
 });
 
-// ini di komen juga
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

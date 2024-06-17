@@ -32,9 +32,12 @@
 
 
             <div class="row mb-3">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Level</label>
+              <label for="level" class="col-sm-2 col-form-label">Level</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="level" id="level" value="{{ $user->level }}">
+                <select class="form-control" name="level" id="level">
+                  <option value="admin" {{ old('level') == 'admin' ? 'selected' : '' }}>Admin</option>
+                  <option value="dokter" {{ old('level') == 'dokter' ? 'selected' : '' }}>Dokter</option>
+                </select>
               </div>
             </div>
 
