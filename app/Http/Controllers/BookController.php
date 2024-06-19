@@ -15,7 +15,7 @@ class BookController extends Controller
         //ambil semua data buku latest lalu bagi menjadi 5 data setiap page
         $book =  Book::latest()->paginate(5);
         // kembalikan halaman view buku list dengan mengirim datanya
-        return view('book.book_list', compact('book'))
+        return view('admin.book.book_list', compact('book'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -25,7 +25,7 @@ class BookController extends Controller
     public function create()
     {
         //
-        return view('book.book_add');
+        return view('admin.book.book_add');
     }
 
     /**
@@ -76,7 +76,7 @@ class BookController extends Controller
 
         if ($book) {
 
-            return view('book.book_edit', compact('book'));
+            return view('admin.book.book_edit', compact('book'));
         } else {
             return redirect()->route('book.index')->with('error', 'book not found');
         }

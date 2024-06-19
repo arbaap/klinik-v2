@@ -8,7 +8,6 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    {{-- jika ada error maka tampilkan pesan login_error --}}
                     @error('login_error')
                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                         <strong>{{ $message }}</strong>
@@ -17,7 +16,6 @@
                         </button>
                     </div>
                     @enderror
-                    {{-- ganti action ke route name yaitu proses.login --}}
                     <form method="POST" action="{{ route('proses.login') }}">
                         @csrf
 
@@ -49,19 +47,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password Confirm') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="password_confirm" type="password" class="form-control @error('password_confirm') is-invalid @enderror" name="password_confirm" required autocomplete="current-password">
-
-                                @error('password_confirm')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
-                        </div>
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">

@@ -16,7 +16,7 @@ class CustomerController extends Controller
         //ambil semua data last lalu bagi menjadi 5 data setiap page
         $customer =  Customer::latest()->paginate(5);
         // kembalikan halaman view customer list dengan mengirim datanya
-        return view('customer.customer_list', compact('customer'))
+        return view('admin.customer.customer_list', compact('customer'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -26,7 +26,7 @@ class CustomerController extends Controller
     public function create()
     {
         //tampilkan halaman add customer
-        return view('customer.customer_add');
+        return view('admin.customer.customer_add');
     }
 
     /**
@@ -65,7 +65,7 @@ class CustomerController extends Controller
         // jika ada data customer
         if ($customer) {
             // buka halaman view customer_edit dengan mengirim datanya
-            return view('customer.customer_edit', compact('customer'));
+            return view('admin.customer.customer_edit', compact('customer'));
         } else {
             return redirect()->route('customer.index')->with('error', 'Customer not found');
         }

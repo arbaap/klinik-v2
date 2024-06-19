@@ -20,7 +20,10 @@ class User extends Authenticatable
         'fullname',
         'email',
         'password',
-        'level'
+        'level',
+        'address',
+        'phone',
+        'gender',
     ];
 
     /**
@@ -44,5 +47,15 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function registrations()
+    {
+        return $this->hasMany(RegistrationKlinik::class, 'user_id');
+    }
+
+    public function isDoctor()
+    {
+        return $this->level === 'dokter'; // Sesuaikan dengan atribut level atau peran dokter Anda
     }
 }

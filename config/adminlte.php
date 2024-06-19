@@ -339,17 +339,24 @@ return [
         // ],
 
         [
-            'text'    => 'Book',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'List',
-                    'url'  => 'admin/book',
-                    'icon' => 'fas fa-fw fa-book',
-                    'role' => 'admin'
-                ],
+            'text' => 'Book',
+            'url'  => 'admin/book',
+            'icon' => 'fas fa-fw fa-book',
+            'role' => 'admin'
+        ],
 
-            ],
+        [
+            'text' => 'User',
+            'url'  => 'admin/user',
+            'icon' => 'fas fa-fw fa-user',
+            'role' => 'admin'
+        ],
+
+        [
+            'text' => 'Registration',
+            'url'  => 'admin/daftar-regist',
+            'icon' => 'fas fa-fw fa-user',
+            'role' => 'admin'
         ],
         ['header' => 'Order Setting'],
         [
