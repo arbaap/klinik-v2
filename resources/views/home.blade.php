@@ -28,49 +28,7 @@
                 </ol>
 
                 <div class="row">
-                    <div class="col-xl-4 col-md-6">
 
-                        <div class="card bg-primary text-white mb-4">
-                            <div class="card-body">Book
-                                <span class="badge bg-danger">{{ $totalBook }}</span>
-                            </div>
-
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="/admin/book">View Details</a>
-                                <div class="small text-white">
-                                    <i class="fas fa-angle-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6">
-                        <div class="card bg-warning text-white mb-4">
-                            <div class="card-body">Customer
-                                <span class="badge bg-danger">{{ $totalCustomer }}</span>
-
-                            </div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="/admin/customer">View Details</a>
-                                <div class="small text-white">
-                                    <i class="fas fa-angle-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-6">
-                        <div class="card bg-success text-white mb-4">
-                            <div class="card-body">Order
-                                <span class="badge bg-danger">{{ $totalOrder }}</span>
-
-                            </div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="/admin/order">View Details</a>
-                                <div class="small text-white">
-                                    <i class="fas fa-angle-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-xl-4 col-md-6">
                         <div class="card bg-success text-white mb-4">
                             <div class="card-body">Users

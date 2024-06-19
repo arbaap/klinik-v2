@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Book;
-use App\Models\Customer;
-use App\Models\Order;
 use App\Models\RegistrationKlinik;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,9 +43,9 @@ class AuthController extends Controller
             if ($user->level === 'admin') {
                 return redirect()->intended('dashboard')->with('success', 'Successfully Login');
             } elseif ($user->level === 'dokter') {
-                return redirect()->intended('notif')->with('success', 'Successfully Login');
+                return redirect()->intended('home')->with('success', 'Successfully Login');
             } elseif ($user->level === 'pasien') {
-                return redirect()->intended('riwayat')->with('success', 'Successfully Login');
+                return redirect()->intended('home')->with('success', 'Successfully Login');
             }
         }
 
@@ -59,13 +56,11 @@ class AuthController extends Controller
     public function dashboard()
     {
         if (Auth::check()) {
-            $totalCustomer = Customer::count();
-            $totalBook = Book::count();
-            $totalOrder = Order::count();
+
             $totalUser = User::count();
             $registrations = RegistrationKlinik::count();
 
-            return view('home', compact('totalCustomer', 'totalBook', 'totalOrder', 'totalUser', 'registrations'));
+            return view('home', compact('totalUser', 'registrations'));
         }
 
         return redirect('login')->with('error', 'You don\'t have access');

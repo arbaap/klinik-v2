@@ -323,13 +323,7 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
-        ['header' => 'Customer Setting'],
-        [
-            'text' => 'Customer',
-            'url'  => 'admin/customer',
-            'icon' => 'fas fa-fw fa-user',
-            'role' => 'admin'
-        ],
+
 
         // [
         //     'text' => 'Customer',
@@ -338,12 +332,7 @@ return [
         //     'role' => 'admin'
         // ],
 
-        [
-            'text' => 'Book',
-            'url'  => 'admin/book',
-            'icon' => 'fas fa-fw fa-book',
-            'role' => 'admin'
-        ],
+
 
         [
             'text' => 'User',
@@ -355,16 +344,8 @@ return [
         [
             'text' => 'Registration',
             'url'  => 'admin/daftar-regist',
-            'icon' => 'fas fa-fw fa-user',
-            'role' => 'admin'
-        ],
-        ['header' => 'Order Setting'],
-        [
-            'text' => 'Orders',
-            'url'  => 'admin/order',
             'icon' => 'fas fa-fw fa-shopping-cart',
-            'role' => 'user'
-
+            'role' => 'admin'
         ],
 
     ],
