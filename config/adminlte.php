@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Klinik</b>Admin',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -295,15 +295,17 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'type'         => 'navbar-search',
+        //     'text'         => 'search',
+        //     'topnav_right' => true,
+        // ],
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
+
+
 
         // Sidebar items:
         [
@@ -323,15 +325,6 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
-
-
-        // [
-        //     'text' => 'Customer',
-        //     'url'  => 'admin/customer',
-        //     'icon' => 'fas fa-fw fa-user',
-        //     'role' => 'admin'
-        // ],
-
 
 
         [

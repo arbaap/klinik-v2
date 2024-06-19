@@ -41,9 +41,9 @@ class AuthController extends Controller
             $user = Auth::user();
 
             if ($user->level === 'admin') {
-                return redirect()->intended('dashboard')->with('success', 'Successfully Login');
+                return redirect()->intended('admin/dashboard')->with('success', 'Successfully Login');
             } elseif ($user->level === 'dokter') {
-                return redirect()->intended('home')->with('success', 'Successfully Login');
+                return redirect()->intended('dokterhome')->with('success', 'Successfully Login');
             } elseif ($user->level === 'pasien') {
                 return redirect()->intended('home')->with('success', 'Successfully Login');
             }
@@ -56,15 +56,19 @@ class AuthController extends Controller
     public function dashboard()
     {
         if (Auth::check()) {
+            $user = Auth::user();
 
-            $totalUser = User::count();
-            $registrations = RegistrationKlinik::count();
+            if ($user->level === 'admin') {
+                $totalUser = User::count();
+                $registrations = RegistrationKlinik::count();
 
-            return view('home', compact('totalUser', 'registrations'));
+                return view('admin.dashboard', compact('totalUser', 'registrations'));
+            }
         }
 
-        return redirect('login')->with('error', 'You don\'t have access');
+        return redirect('home')->with('error', 'You don\'t have access');
     }
+
 
     public function proses_register(Request $request)
     {
@@ -113,10 +117,15 @@ class AuthController extends Controller
 
     public function home()
     {
-
         $user = Auth::user();
+
+        if ($user->level !== 'pasien') {
+            return redirect('login')->with('error', 'Unauthorized access. Only patients are allowed.');
+        }
+
         return view('pasien.home', compact('user'));
     }
+
 
     public function showRegistrationForm()
     {
@@ -157,5 +166,15 @@ class AuthController extends Controller
             Session::flash('register_error', 'Registration failed: ' . $errorMessage);
             return back()->withInput();
         }
+    }
+
+    public function dokterHome()
+    {
+        $user = Auth::user();
+        if ($user->level !== 'dokter') {
+            return redirect('login')->with('error', 'Unauthorized access. Only patients are allowed.');
+        }
+
+        return view('dokter.home', compact('user'));
     }
 }
