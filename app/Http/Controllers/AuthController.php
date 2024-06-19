@@ -52,24 +52,6 @@ class AuthController extends Controller
         return redirect('login')->withInput()->withErrors(['login_error' => 'Username or password are wrong!']);
     }
 
-
-    public function dashboard()
-    {
-        if (Auth::check()) {
-            $user = Auth::user();
-
-            if ($user->level === 'admin') {
-                $totalUser = User::count();
-                $registrations = RegistrationKlinik::count();
-
-                return view('admin.dashboard', compact('totalUser', 'registrations'));
-            }
-        }
-
-        return redirect('home')->with('error', 'You don\'t have access');
-    }
-
-
     public function proses_register(Request $request)
     {
         $validation = Validator::make($request->all(), [
@@ -102,6 +84,25 @@ class AuthController extends Controller
             return back()->withErrors(['register_error' => 'Registration failed. Please try again.'])->withInput();
         }
     }
+
+
+    // admin
+    public function dashboard()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            if ($user->level === 'admin') {
+                $totalUser = User::count();
+                $registrations = RegistrationKlinik::count();
+
+                return view('admin.dashboard', compact('totalUser', 'registrations'));
+            }
+        }
+
+        return redirect('home')->with('error', 'You don\'t have access');
+    }
+
 
     public function logout()
     {

@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 
-
 class PasienController extends Controller
 {
 
@@ -26,16 +25,6 @@ class PasienController extends Controller
         return view('pasien.home', compact('user'));
     }
 
-
-    //dokter
-
-    public function index()
-    {
-
-        $registrations =  RegistrationKlinik::latest()->paginate(10);
-        return view('admin.registration.index', compact('registrations'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
-    }
 
     public function show()
     {
@@ -56,7 +45,7 @@ class PasienController extends Controller
     {
         $validation = Validator::make($request->all(), [
             'doctor_id' => 'required|exists:users,id,level,dokter',
-            'complaint' => 'required',
+            'keluhan' => 'required',
         ]);
 
         if ($validation->fails()) {
@@ -73,12 +62,14 @@ class PasienController extends Controller
             $registration = new RegistrationKlinik([
                 'user_id' => $user->id,
                 'doctor_id' => $request->input('doctor_id'),
-                'complaint' => $request->input('complaint'),
+                'keluhan' => $request->input('keluhan'),
+                'status' => 'pending',
+                'resep' => '',
             ]);
 
             $registration->save();
 
-            return redirect('registration')->with('success', 'Registration to the clinic was successful');
+            return redirect('riwayat')->with('success', 'Registration to the clinic was successful');
         } catch (\Exception $e) {
             $errorMessage = $e->getMessage();
             Session::flash('register_error', 'Registration failed: ' . $errorMessage);

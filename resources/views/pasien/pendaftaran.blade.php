@@ -52,12 +52,12 @@
 
               <!-- Complaint -->
               <div class="form-group row">
-                <label for="complaint" class="col-md-4 col-form-label text-md-right">{{ __('Keluhan') }}</label>
+                <label for="keluhan" class="col-md-4 col-form-label text-md-right">{{ __('Keluhan') }}</label>
 
                 <div class="col-md-6">
-                  <textarea id="complaint" class="form-control @error('complaint') is-invalid @enderror" name="complaint" required>{{ old('complaint') }}</textarea>
+                  <textarea id="keluhan" class="form-control @error('keluhan') is-invalid @enderror" name="keluhan" required>{{ old('keluhan') }}</textarea>
 
-                  @error('complaint')
+                  @error('keluhan')
                   <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                   </span>

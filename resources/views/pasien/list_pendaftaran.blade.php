@@ -39,21 +39,35 @@
                             <th>Dokter</th>
                             <th>Keluhan</th>
                             <th>Tanggal</th>
+                            <th>Status</th>
                             <th>Resep</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($registrations as $index => $registration)
+                        @if ($registration->status == App\Models\RegistrationKlinik::STATUS_PENDING || $registration->status == App\Models\RegistrationKlinik::STATUS_COMPLETED)
                         <tr>
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $registration->doctor->fullname }}</td>
-                            <td>{{ $registration->complaint }}</td>
+                            <td>{{ $registration->keluhan }}</td>
                             <td>{{ $registration->created_at }}</td>
-                            <td>{{ $registration->prescription }}</td>
+                            <td>{{ $registration->status }}</td>
+                            <td>{{ $registration->resep }}</td>
                         </tr>
+                        @elseif ($registration->status == App\Models\RegistrationKlinik::STATUS_ACCEPTED)
+                        <tr>
+                            <td>{{ $index + 1 }}</td>
+                            <td>{{ $registration->doctor->fullname }}</td>
+                            <td>{{ $registration->keluhan }}</td>
+                            <td>{{ $registration->created_at }}</td>
+                            <td>Sedang ditindak/ di cek</td>
+                            <td>-</td>
+                        </tr>
+                        @endif
                         @endforeach
                     </tbody>
                 </table>
+
                 @endif
             </div>
         </div>

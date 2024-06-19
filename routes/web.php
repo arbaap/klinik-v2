@@ -31,16 +31,17 @@ Route::post('proses_register', [AuthController::class, 'proses_register'])->name
 
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('user', UserController::class);
-    Route::resource('daftar-regist', PasienController::class);
+    Route::get('daftar-regist', [UserController::class, 'pendaftaran'])->name('daftar-regist.index');
+    Route::patch('admin/registrations/{id}/update-status', [UserController::class, 'updateStatus'])->name('registrations.updateStatus');
 });
+
 
 
 // pasien
 Route::get('home', [PasienController::class, 'home'])->name('home');
-Route::get('registration', [PasienController::class, 'showRegistrationForm'])->name('registration');
-Route::post('proses-registration', [PasienController::class, 'processRegistration'])->name('proses.registrationklinik');
-Route::get('/registrations', [PasienController::class, 'index'])->name('registrations.index');
+Route::get('pendaftaran-klinik', [PasienController::class, 'showRegistrationForm'])->name('registration');
 Route::get('/riwayat', [PasienController::class, 'show'])->name('registrations.show');
+Route::post('proses-registration', [PasienController::class, 'processRegistration'])->name('proses.registrationklinik');
 
 
 // dokter

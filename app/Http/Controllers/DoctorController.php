@@ -37,9 +37,10 @@ class DoctorController extends Controller
             abort(403);
         }
 
-        $registration->prescription = $request->input('prescription');
+        $registration->resep = $request->input('resep');
+        $registration->status = RegistrationKlinik::STATUS_ACCEPTED;
         $registration->save();
 
-        return redirect()->back()->with('success', 'Prescription added successfully.');
+        return redirect()->back()->with('success', 'Prescription added successfully. Status updated to Accepted.');
     }
 }
