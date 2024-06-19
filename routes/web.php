@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::resource('book', BookController::class);
     Route::resource('order', OrderController::class);
     Route::resource('user', UserController::class);
+    Route::resource('daftar-regist', RegistrationKlinikController::class);
 });
 
 
@@ -40,8 +41,7 @@ Route::get('registration', [AuthController::class, 'showRegistrationForm'])->nam
 Route::get('/registrations', [RegistrationKlinikController::class, 'index'])->name('registrations.index');
 Route::post('proses-registration', [AuthController::class, 'processRegistration'])->name('proses.registrationklinik');
 
-Route::get('/riwayat', [RegistrationKlinikController::class, 'index'])->name('registrations.index');
-
+Route::get('/riwayat', [RegistrationKlinikController::class, 'show'])->name('registrations.show');
 Route::get('/notif', [DoctorController::class, 'index'])->name('dokter.index');
 
 

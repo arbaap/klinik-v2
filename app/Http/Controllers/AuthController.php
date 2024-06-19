@@ -41,11 +41,20 @@ class AuthController extends Controller
         }
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')->with('success', 'Successfully Login');
+            $user = Auth::user();
+
+            if ($user->level === 'admin') {
+                return redirect()->intended('dashboard')->with('success', 'Successfully Login');
+            } elseif ($user->level === 'dokter') {
+                return redirect()->intended('notif')->with('success', 'Successfully Login');
+            } elseif ($user->level === 'pasien') {
+                return redirect()->intended('riwayat')->with('success', 'Successfully Login');
+            }
         }
 
         return redirect('login')->withInput()->withErrors(['login_error' => 'Username or password are wrong!']);
     }
+
 
     public function dashboard()
     {
@@ -54,8 +63,9 @@ class AuthController extends Controller
             $totalBook = Book::count();
             $totalOrder = Order::count();
             $totalUser = User::count();
+            $registrations = RegistrationKlinik::count();
 
-            return view('home', compact('totalCustomer', 'totalBook', 'totalOrder', 'totalUser'));
+            return view('home', compact('totalCustomer', 'totalBook', 'totalOrder', 'totalUser', 'registrations'));
         }
 
         return redirect('login')->with('error', 'You don\'t have access');

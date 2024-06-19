@@ -351,6 +351,13 @@ return [
             'icon' => 'fas fa-fw fa-user',
             'role' => 'admin'
         ],
+
+        [
+            'text' => 'Registration',
+            'url'  => 'admin/daftar-regist',
+            'icon' => 'fas fa-fw fa-user',
+            'role' => 'admin'
+        ],
         ['header' => 'Order Setting'],
         [
             'text' => 'Orders',

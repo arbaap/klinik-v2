@@ -34,13 +34,12 @@
             <td>{{ $registration->prescription ?? 'Not provided' }}</td>
             <td>{{ $registration->created_at }}</td>
             <td>
-              <!-- Tampilkan form untuk menambahkan resep -->
               <form action="{{ route('doctor.addPrescription', $registration->id) }}" method="POST">
                 @csrf
                 <div class="form-group">
                   <textarea class="form-control" name="prescription" rows="3" placeholder="Add prescription...">{{ $registration->prescription ?? '' }}</textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Save Prescription</button>
+                <button type="submit" class="btn btn-primary">Tambah Resep</button>
               </form>
             </td>
           </tr>
