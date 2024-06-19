@@ -33,8 +33,8 @@ class UsersTableSeeder extends Seeder
 
         $patients = [
             [
-                'fullname' => 'Pasien Satu',
-                'email' => 'pasien1@gmail.com',
+                'fullname' => 'Pasien Jokowi',
+                'email' => 'pasiensatu@gmail.com',
                 'address' => 'Pasirjati',
                 'phone' => '0812345678',
                 'gender' => 'female',
@@ -42,8 +42,8 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make($defaultPassword),
             ],
             [
-                'fullname' => 'Pasien Dua',
-                'email' => 'pasien2@gmail.com',
+                'fullname' => 'Pasien Prabowo',
+                'email' => 'pasiendua@gmail.com',
                 'address' => 'Pasirjati',
                 'phone' => '0856789012',
                 'gender' => 'male',
@@ -51,8 +51,8 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make($defaultPassword),
             ],
             [
-                'fullname' => 'Pasien Tiga',
-                'email' => 'pasien3@gmail.com',
+                'fullname' => 'Pasien Megawati',
+                'email' => 'pasientiga@gmail.com',
                 'address' => 'Pasirjati',
                 'phone' => '0876543210',
                 'gender' => 'other',
@@ -69,8 +69,8 @@ class UsersTableSeeder extends Seeder
 
         $doctors = [
             [
-                'fullname' => 'Dr. TestSatu',
-                'email' => 'drtestsatu@gmail.com',
+                'fullname' => 'Dr. Asep',
+                'email' => 'doktersatu@gmail.com',
                 'address' => 'Hasan Sadikin',
                 'phone' => '0811122334',
                 'gender' => 'male',
@@ -78,8 +78,8 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make($doctorPassword),
             ],
             [
-                'fullname' => 'Dr. TestDua',
-                'email' => 'drtestdua@gmail.com',
+                'fullname' => 'Dr. Widodo',
+                'email' => 'dokterdua@gmail.com',
                 'address' => 'Hasan Sadikin',
                 'phone' => '0855566778',
                 'gender' => 'female',
@@ -87,8 +87,8 @@ class UsersTableSeeder extends Seeder
                 'password' => Hash::make($doctorPassword),
             ],
             [
-                'fullname' => 'Dr. TestTiga',
-                'email' => 'drtesttiga@gmail.com',
+                'fullname' => 'Dr. Adib',
+                'email' => 'doktertiga@gmail.com',
                 'address' => 'Hasan Sadikin',
                 'phone' => '0888899900',
                 'gender' => 'male',

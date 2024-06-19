@@ -56,6 +56,6 @@ class User extends Authenticatable
 
     public function isDoctor()
     {
-        return $this->level === 'dokter'; // Sesuaikan dengan atribut level atau peran dokter Anda
+        return $this->level === 'dokter';
     }
 }

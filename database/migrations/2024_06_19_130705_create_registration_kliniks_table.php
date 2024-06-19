@@ -12,7 +12,9 @@ class CreateRegistrationKliniksTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('doctor_id')->constrained('users');
-            $table->text('complaint');
+            $table->text('keluhan');
+            $table->text('resep');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

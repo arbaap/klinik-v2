@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Klinik</b>Admin',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -295,15 +295,17 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'type'         => 'navbar-search',
-            'text'         => 'search',
-            'topnav_right' => true,
-        ],
+        // [
+        //     'type'         => 'navbar-search',
+        //     'text'         => 'search',
+        //     'topnav_right' => true,
+        // ],
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
+
+
 
         // Sidebar items:
         [
@@ -323,27 +325,7 @@ return [
             // 'label'       => 4,
             // 'label_color' => 'success',
         ],
-        ['header' => 'Customer Setting'],
-        [
-            'text' => 'Customer',
-            'url'  => 'admin/customer',
-            'icon' => 'fas fa-fw fa-user',
-            'role' => 'admin'
-        ],
 
-        // [
-        //     'text' => 'Customer',
-        //     'url'  => 'admin/customer',
-        //     'icon' => 'fas fa-fw fa-user',
-        //     'role' => 'admin'
-        // ],
-
-        [
-            'text' => 'Book',
-            'url'  => 'admin/book',
-            'icon' => 'fas fa-fw fa-book',
-            'role' => 'admin'
-        ],
 
         [
             'text' => 'User',
@@ -355,16 +337,8 @@ return [
         [
             'text' => 'Registration',
             'url'  => 'admin/daftar-regist',
-            'icon' => 'fas fa-fw fa-user',
-            'role' => 'admin'
-        ],
-        ['header' => 'Order Setting'],
-        [
-            'text' => 'Orders',
-            'url'  => 'admin/order',
             'icon' => 'fas fa-fw fa-shopping-cart',
-            'role' => 'user'
-
+            'role' => 'admin'
         ],
 
     ],

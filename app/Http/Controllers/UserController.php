@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RegistrationKlinik;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Type\Integer;
@@ -82,5 +83,24 @@ class UserController extends Controller
         return response()->json([
             'user' => $user
         ]);
+    }
+
+
+    public function pendaftaran()
+    {
+        $registrations = RegistrationKlinik::latest()->paginate(10);
+        return view('admin.registration.index', compact('registrations'))
+            ->with('i', (request()->input('page', 1) - 1) * 10);
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $registration = RegistrationKlinik::findOrFail($id);
+
+        $registration->update([
+            'status' => $request->status,
+        ]);
+
+        return redirect()->back()->with('success', 'Status updated successfully.');
     }
 }
