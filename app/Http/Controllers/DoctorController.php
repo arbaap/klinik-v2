@@ -8,6 +8,19 @@ use Illuminate\Support\Facades\Auth;
 
 class DoctorController extends Controller
 {
+
+
+    public function dokterHome()
+    {
+        $user = Auth::user();
+        if ($user->level !== 'dokter') {
+            return redirect('login')->with('error', 'Unauthorized access. Only patients are allowed.');
+        }
+
+        return view('dokter.home', compact('user'));
+    }
+
+
     public function index()
     {
         $doctor = Auth::user();
