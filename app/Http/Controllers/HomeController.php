@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Barang;
+use App\Models\Penjualan;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,26 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $barangs = Barang::all();
+
+
+        $penjualans = Penjualan::leftJoin('barang as b', 'b.id', '=', 'penjualan.id_barang')
+            ->select('penjualan.*', 'b.nama_driver')
+            ->get();
+
+        $totalPemasukan = Penjualan::selectRaw('nama_driver, SUM(penghasilan_driver) as total_pemasukan')
+            ->leftJoin(
+                'barang',
+                'barang.id',
+                '=',
+                'penjualan.id_barang'
+            )
+            ->groupBy('nama_driver')
+            ->get();
+
+        return view('home', [
+            'barangs' => $barangs,
+            'penjualans' => $penjualans,
+        ]);
     }
 }

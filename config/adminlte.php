@@ -318,27 +318,19 @@ return [
             'can'  => 'manage-blog',
 
         ],
+
+
+
+
         [
-            'text'        => 'Dashboard',
-            'url'         => 'admin/dashboard',
+            'text'        => 'Daftar Driver',
+            'url'         => '/barangs',
             'icon'        => 'far fa-fw fa-file',
-            // 'label'       => 4,
-            // 'label_color' => 'success',
         ],
-
-
         [
-            'text' => 'User',
-            'url'  => 'admin/user',
-            'icon' => 'fas fa-fw fa-user',
-            'role' => 'admin'
-        ],
-
-        [
-            'text' => 'Registration',
-            'url'  => 'admin/daftar-regist',
-            'icon' => 'fas fa-fw fa-shopping-cart',
-            'role' => 'admin'
+            'text'        => 'Penghasilan Driver',
+            'url'         => '/penjualans',
+            'icon'        => 'far fa-fw fa-file',
         ],
 
     ],
